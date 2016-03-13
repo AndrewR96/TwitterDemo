@@ -37,10 +37,9 @@ Here's a walkthrough of implemented user stories:
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
-I felt that the learning curve for this assinment was really steep. It took a great load of time for me to mentally and visually understand certain concepts being demonstrated in the video. Unfortunately I am still not complete in terms of the requierements of the app, but due to confusion and certain areas that im still unclear of, I will continue to seek help from my mentors and peers. Although it is incomplete, I still wanted to submit my work to show what I am working on in terms of progress and standing. I will for sure have everyhting ready and complete for the saturday deadline.
 
 Describe any challenges encountered while building the app.
-
+Im having trouble with the syntax regarding my TweetCell. Unfortunately Im getting all these errors in regards to the syntax and I have no clue how to fix it. I thought the syntax would be similar to the yelp assignmnet, but I unfortunately thought wrong :(.
 ## License
 
     Copyright [yyyy] [name of copyright owner]
