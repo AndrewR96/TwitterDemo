@@ -97,20 +97,20 @@ class TwitterClient: BDBOAuth1SessionManager {
         
     }
     
-    func RT(num: Int, params: NSDictionary?, completion: (error: NSError?) -> () ){
+    func Retweet(num: Int, params: NSDictionary?, completion: (error: NSError?) -> () ){
         POST("1.1/statuses/retweet/\(num).json", parameters: params, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
             completion(error: nil)
-            print ("RT")
+            print ("Retweet the tweet")
             }, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
                 completion(error: error)
             }
         )
     }
     
-    func Fav(num: Int, params: NSDictionary?, completion: (error: NSError?) -> () ){
+    func Favorite(num: Int, params: NSDictionary?, completion: (error: NSError?) -> () ){
         POST("1.1/favorites/create.json?id=\(num)", parameters: params, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
             completion(error: nil)
-            print ("Fav")
+            print ("The tweet is favoirted")
             }, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
                 completion(error: error)
             }

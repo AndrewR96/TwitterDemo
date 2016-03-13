@@ -25,15 +25,17 @@ class TweetCell: UITableViewCell {
     var tweet: Tweet!
         {
         didSet{
-            nameLabel.text = tweet.name
-            usernameLabel.text = tweet.username
+            nameLabel.text = tweet.user!.name! as String
+            
+            usernameLabel.text = "@\(tweet.user!.screenname!)"
+            
             tweetLabel.text = tweet.tweet
             likesLabel.text = tweet.likes
             retweetLabel.text = tweet.retweet
-            profilephotoView.setImageWithURL(tweet.profilephotoURL!)
-            
-            
-           /* nameLabel.text = business.name
+           
+            profilephotoView.setImageWithURL(tweet.user!.profilephotoURL!)
+          
+            /* nameLabel.text = business.name
             thumbImageView.setImageWithURL(business.imageURL!)
             categoriesLabel.text = business.categories
             addressLabel.text = business.address
