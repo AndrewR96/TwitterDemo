@@ -39,7 +39,10 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 
 Describe any challenges encountered while building the app.
+
+
 Im having trouble with the syntax regarding my TweetCell. Unfortunately Im getting all these errors in regards to the syntax and I have no clue how to fix it. I thought the syntax would be similar to the yelp assignmnet, but I unfortunately thought wrong :(.
+
 ## License
 
     Copyright [yyyy] [name of copyright owner]
