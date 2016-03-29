@@ -47,11 +47,13 @@ class TweetsViewContoller: UIViewController, UITableViewDataSource, UITableViewD
         } else {
             return 0
         }
+
+        //return tweets!.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
-        cell.tweet = tweets?[indexPath.row]
+        cell.tweet = tweets[indexPath.row]
         
         return cell
     }

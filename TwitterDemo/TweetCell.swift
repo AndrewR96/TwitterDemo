@@ -25,16 +25,14 @@ class TweetCell: UITableViewCell {
     var tweet: Tweet!
         {
         didSet{
+            
             nameLabel.text = tweet.user!.name! as String
-            
             usernameLabel.text = "@\(tweet.user!.screenname!)"
-            
-            tweetLabel.text = tweet.tweet
-            likesLabel.text = tweet.likes
-            retweetLabel.text = tweet.retweet
+            tweetLabel.text = tweet.text as! String
+            likesLabel.text = "\(tweet.favortiesCount)"
+            retweetLabel.text = "\(tweet.retweetCount)"
+            profilephotoView.setImageWithURL((tweet.user!.profileUrl)!)
            
-            profilephotoView.setImageWithURL(tweet.user!.profilephotoURL!)
-          
             /* nameLabel.text = business.name
             thumbImageView.setImageWithURL(business.imageURL!)
             categoriesLabel.text = business.categories
@@ -48,62 +46,62 @@ class TweetCell: UITableViewCell {
             
             id = tweet.num
             
-            dateLabel.text = tweetTime(tweet.timestamp!.timeIntervalSinceNow)
+           // created.text = tweetTime(tweet.timestamp!.timeIntervalSinceNow)
         }
     }
     
-    @IBAction func onLike(sender: AnyObject) {
-        TwitterClient.sharedInstance.Fav(Int(id)!, params: nil, completion: {(error) -> () in
+ @IBAction func onLike(sender: AnyObject) {
+        TwitterClient.sharedInstance.Favorite(Int(id)!, params: nil, completion: {(error) -> () in
             self.likesButton.setImage(UIImage(named: "like"), forState: UIControlState.Normal)
-            self.likesLabel.text = String(self.tweet.favCount + 1)
+            self.likesLabel.text = String(self.tweet.favortiesCount + 1)
         })    }
     
     
-    @IBAction func onRetweet(sender: AnyObject) {
-        TwitterClient.sharedInstance.RT(Int(id)!, params: nil, completion: {(error) -> () in
+  @IBAction func onRetweet(sender: AnyObject) {
+        TwitterClient.sharedInstance.Retweet(Int(id)!, params: nil, completion: {(error) -> () in
             self.retweetButton.setImage(UIImage(named: "retweet"), forState: UIControlState.Normal)
             self.retweetLabel.text = String(self.tweet.retweetCount + 1)
         })
     
     }
     
-    func tweetTime(time: NSTimeInterval) -> String
+func tweetTime(time: NSTimeInterval) -> String
     {
-        var timegiven = -Int(time)
-        var timecalc: Int = 0
+        var given_time = -Int(time)
+        var timeCalc: Int = 0
         
-        print("timegiven: \(timegiven)")
+        print("given_time: \(given_time)")
         
-        if timegiven == 0
+        if given_time == 0
         {
             return "Now"
         }
-        else if timegiven <= 60
+        else if given_time <= 60
         {
-            return "\(timegiven)s"
+            return "\(given_time)s"
         }
-        else if (timegiven/60 <= 60)
+        else if (given_time/60 <= 60)
         {
-            timecalc = timegiven/60
-            return "\(timecalc)m"
+            timeCalc = given_time/60
+            return "\(timeCalc)m"
         }
-        else if (timegiven/3600 <= 24)
+        else if (given_time/3600 <= 24)
         {
-            timecalc = timegiven/3600
-            return "\(timecalc)h"
+            timeCalc = given_time/3600
+            return "\(timeCalc)h"
         }
-        else if (timegiven/(3600*24) <= 365)
+        else if (given_time/(3600*24) <= 365)
         {
-            timecalc = timegiven/(3600*24)
-            return "\(timecalc)d"
+            timeCalc = given_time/(3600*24)
+            return "\(timeCalc)d"
         }
         else
         {
-            timecalc = timegiven/(3600*24*365)
-            return "\(timecalc)y"
+            timeCalc = given_time/(3600*24*365)
+            return "\(timeCalc)y"
         }
         
-        return "\(timecalc)"
+        return "\(timeCalc)"
         
     }
     
