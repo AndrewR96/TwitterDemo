@@ -39,14 +39,16 @@ class User: NSObject {
         get{
             if _currentUser == nil{
             let defaults = NSUserDefaults.standardUserDefaults()
-            
             let userData = defaults.objectForKey("currentUserData") as? NSData
-                
-        if let userData = userData{
+            if let userData = userData{
                 let dictionary = try! NSJSONSerialization.JSONObjectWithData(userData, options: []) as! NSDictionary
                    _currentUser = User(dictionary: dictionary)
         
                }
+            else{
+                    _currentUser = nil
+        
+                }
             }
             return _currentUser
         }
@@ -67,14 +69,13 @@ class User: NSObject {
                 defaults.setObject(nil, forKey: "currentUserData")
             }
             
-            
-            defaults.setObject(user, forKey: "currentUser")
+          
             
             defaults.synchronize()
         
-    }
+        }
     
-}
+    }
     
 }
 

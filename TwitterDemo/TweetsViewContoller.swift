@@ -20,8 +20,7 @@ class TweetsViewContoller: UIViewController, UITableViewDataSource, UITableViewD
         
         TwitterClient.sharedInstance.homeTimeLine({ (tweets: [Tweet]) -> () in
             self.tweets = tweets
-            
-            
+            self.TableView.reloadData()
             for tweet in tweets{
                 print(tweet.text)
             }

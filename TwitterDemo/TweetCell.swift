@@ -46,7 +46,7 @@ class TweetCell: UITableViewCell {
             
             id = tweet.num
             
-           // created.text = tweetTime(tweet.timestamp!.timeIntervalSinceNow)
+           dateLabel.text = tweetTime(tweet.timestamp!.timeIntervalSinceNow)
         }
     }
     
